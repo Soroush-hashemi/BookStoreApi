@@ -2,13 +2,35 @@ namespace BookStore.Domain.ValueObjects;
 
 public class Metadata
 {
-    public string? Title { get; set; }
-    public string? Description { get; set; }
-    public string? Keyword { get; set; }
-    public string? CanonicalUrl { get; set; }
-    public string? IndexPage { get; set; }
-    public string? OgTitle { get; set; }
-    public string? OgDescription { get; set; }
-    public string? OgUrl { get; set; }
-    public string? OgImage { get; set; }
+    public string Title { get; }
+    public string Description { get; }
+    public string Keyword { get; }
+    public string CanonicalUrl { get; }
+    public string IndexPage { get; }
+    public string OgTitle { get; }
+    public string OgDescription { get; }
+    public string OgUrl { get; }
+    public string OgImage { get; }
+
+    public Metadata(
+        string? title,
+        string? description,
+        string? keyword,
+        string? canonicalUrl,
+        string? indexPage,
+        string? ogTitle,
+        string? ogDescription,
+        string? ogUrl,
+        string? ogImage)
+    {
+        Title = title ?? string.Empty;
+        Description = description ?? string.Empty;
+        Keyword = keyword ?? string.Empty;
+        CanonicalUrl = canonicalUrl ?? string.Empty;
+        IndexPage = indexPage ?? string.Empty;
+        OgTitle = ogTitle ?? string.Empty;
+        OgDescription = ogDescription ?? string.Empty;
+        OgUrl = ogUrl ?? string.Empty;
+        OgImage = ogImage ?? string.Empty;
+    }
 }
