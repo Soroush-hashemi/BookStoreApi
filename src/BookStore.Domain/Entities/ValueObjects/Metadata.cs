@@ -1,4 +1,4 @@
-namespace BookStore.Domain.ValueObjects;
+namespace BookStore.Domain.Entities.ValueObjects;
 
 public class Metadata
 {
