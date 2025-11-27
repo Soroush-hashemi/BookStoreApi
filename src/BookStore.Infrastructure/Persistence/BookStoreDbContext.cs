@@ -1,5 +1,6 @@
 using BookStore.Domain.Entities.Books;
 using BookStore.Domain.Entities.Category;
+using BookStore.Domain.Entities.Comments;
 using BookStore.Domain.Entities.Slider;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ public class BookStoreDbContext : DbContext
     public DbSet<Book> Books { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Slider> Sliders { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
