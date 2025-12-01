@@ -1,6 +1,5 @@
 using BookStore.Application.Interface.Common;
 using BookStore.Domain.Entities.Books;
-using BookStore.Shared;
 
 namespace BookStore.Application.Interface;
 
