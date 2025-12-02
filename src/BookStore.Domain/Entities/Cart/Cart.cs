@@ -9,7 +9,7 @@ public class Cart : BaseEntity
 
     public Guid UserId { get; private set; }
     public bool IsFinaly { get; private set; }
-    public IReadOnlyCollection<CartItem> Items => _items.AsReadOnly();
+    public List<CartItem> Items;
     public int TotalPrice => _items.Sum(i => i.TotalPrice);
     public int TotalItems => _items.Sum(i => i.Quantity);
 
@@ -19,6 +19,7 @@ public class Cart : BaseEntity
             throw new NullPropertyException("userId is invalid");
 
         UserId = userId;
+        Items = new List<CartItem>();
     }
 
     public void AddItem(Guid bookId, int quantity, int unitPrice)
