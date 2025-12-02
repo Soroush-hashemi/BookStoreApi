@@ -10,7 +10,7 @@ public class CartItem : BaseEntity
     public int UnitPrice { get; private set; }
     public int TotalPrice => Quantity * UnitPrice;
 
-    public CartItem(Guid bookId, int quantity, int unitPrice)
+    internal CartItem(Guid bookId, int quantity, int unitPrice)
     {
         if (bookId == Guid.Empty)
             throw new NullPropertyException("bookId is invalid");
@@ -33,6 +33,15 @@ public class CartItem : BaseEntity
 
         Quantity += amount;
     }
+
+    public void DecreaseQuantity(int amount)
+    {
+        if (amount <= 0)
+            throw new NullPropertyException("amount must be greater than zero");
+
+        Quantity -= amount;
+    }
+
 
     public void UpdateQuantity(int quantity)
     {
