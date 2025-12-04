@@ -66,7 +66,7 @@ public class CartService : ICartService
             if (!validationItem.IsValid)
                 return Result.Error(string.Join
                 (",", validationItem.Errors.Select(i => i.ErrorMessage)));
-    
+
             var Cart = await _cartRepository
                 .GetByUserIdAsync(userId);
 
@@ -77,7 +77,7 @@ public class CartService : ICartService
             }
 
             var existingItem = await _cartItemRepository
-                .ItemIsExistInCart(CartItemDto.Id, CartItemDto.BookId);
+                .GetByIdAsync(CartItemDto.Id);
 
             if (existingItem != null)
                 existingItem.IncreaseQuantity(1);
@@ -115,7 +115,7 @@ public class CartService : ICartService
             }
 
             var Item = await _cartItemRepository
-                .GetItemById(CartItemId);
+                .GetByIdAsync(CartItemId);
 
             if (Item is null)
                 return Result.Error("item does not exist");
@@ -142,7 +142,7 @@ public class CartService : ICartService
                 return Result.Error("CartItem Id in Empty");
 
             var CartItem = await _cartItemRepository
-                .GetItemById(CartItemId);
+                .GetByIdAsync(CartItemId);
 
             if (CartItem is null)
                 return Result.Error("CartItem not found");
