@@ -2,6 +2,7 @@ using BookStore.Domain.Entities.Comments;
 using BookStore.Domain.Entities.Books;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using BookStore.Infrastructure.Identity.Data;
 
 namespace BookStore.Infrastructure.Persistence.Configuration;
 
@@ -26,7 +27,9 @@ public class CommentConfigure : IEntityTypeConfiguration<Comment>
         builder.Property(c => c.BookId)
             .IsRequired();
 
-        builder.Property(c => c.UserId)
+        builder.HasOne<ApplicationUser>()
+            .WithMany()
+            .HasForeignKey(c => c.UserId)
             .IsRequired();
 
         builder.HasOne<Book>()
