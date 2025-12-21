@@ -6,11 +6,12 @@ namespace BookStore.Domain.Entities.Carts;
 public class CartItem : BaseEntity
 {
     public Guid BookId { get; private set; }
+    public Guid CartId { get; private set; }
     public int Quantity { get; private set; }
     public int UnitPrice { get; private set; }
     public int TotalPrice => Quantity * UnitPrice;
 
-    internal CartItem(Guid bookId, int quantity, int unitPrice)
+    internal CartItem(Guid bookId, Guid cartId, int quantity, int unitPrice)
     {
         if (bookId == Guid.Empty)
             throw new NullPropertyException("bookId is invalid");
@@ -22,6 +23,7 @@ public class CartItem : BaseEntity
             throw new NullPropertyException("unitPrice cannot be negative");
 
         BookId = bookId;
+        CartId = cartId;
         Quantity = quantity;
         UnitPrice = unitPrice;
     }

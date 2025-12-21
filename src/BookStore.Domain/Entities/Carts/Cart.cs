@@ -9,7 +9,7 @@ public class Cart : BaseEntity
 
     public Guid UserId { get; private set; }
     public bool IsFinaly { get; private set; }
-    public List<CartItem> Items;
+    public List<CartItem> Items { get; set; }
     public int TotalPrice => _items.Sum(i => i.TotalPrice);
     public int TotalItems => _items.Sum(i => i.Quantity);
 
@@ -37,7 +37,7 @@ public class Cart : BaseEntity
         if (existing is not null)
             existing.IncreaseQuantity(quantity);
         else
-            _items.Add(new CartItem(bookId, quantity, unitPrice));
+            _items.Add(new CartItem(bookId, Id, quantity, unitPrice));
     }
 
     public void AddItem(CartItem item)
